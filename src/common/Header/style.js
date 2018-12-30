@@ -44,7 +44,23 @@ export const NavItem = styled.div`
   }
   
   &.active {
-  color: #ea6f5a;
+    color: #ea6f5a;
+  }
+`
+
+export const SearchWrapper = styled.div`
+  float: left;
+  position: relative;
+  
+  .iconfont {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    width: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.3rem;
   }
 `
 

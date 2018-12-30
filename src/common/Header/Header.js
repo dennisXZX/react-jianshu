@@ -6,7 +6,8 @@ import {
   Logo,
   Nav,
   NavItem,
-  NavSearch
+  NavSearch,
+  SearchWrapper
 } from './style'
 
 class Header extends Component {
@@ -19,12 +20,19 @@ class Header extends Component {
           <NavItem className="left active">Home</NavItem>
           <NavItem className="left">Download</NavItem>
           <NavItem className="right">Login</NavItem>
-          <NavItem className="right">Aa</NavItem>
+          <NavItem className="right">
+            <i className="iconfont">&#xe636;</i>
+          </NavItem>
 
-          <NavSearch />
+          <SearchWrapper>
+            <NavSearch />
+            <i className="iconfont">&#xe60c;</i>
+          </SearchWrapper>
 
           <Addition>
-            <Button className="write">Write</Button>
+            <Button className="write">
+              <i className="iconfont">&#xe62b;</i> Write
+            </Button>
             <Button className="register">Register</Button>
           </Addition>
         </Nav>
