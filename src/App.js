@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ResetStyle from './styles/resetStyle'
-import GlobalStyle from './styles/globalStyle'
+import ResetStyle from './global-style/resetStyle'
+import GlobalStyle from './global-style/globalStyle'
+import Header from './common/Header/Header'
 
 class App extends Component {
   render() {
@@ -8,7 +9,7 @@ class App extends Component {
       <div>
         <ResetStyle />
         <GlobalStyle />
-        jianshu
+        <Header />
       </div>
     );
   }
