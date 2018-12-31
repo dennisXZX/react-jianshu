@@ -12,8 +12,37 @@ import {
   Nav,
   NavItem,
   NavSearch,
+  SearchInfo,
+  SearchInfoTitle,
+  SearchInfoSwitch,
+  SearchInfoList,
+  SearchInfoItem,
   SearchWrapper
 } from './headerStyle'
+
+const getListArea = (show) => {
+  if (show) {
+    return (
+      <SearchInfo>
+        <SearchInfoTitle>
+          Hot Searches
+          <SearchInfoSwitch>
+            Change
+          </SearchInfoSwitch>
+          <SearchInfoList>
+            <SearchInfoItem>Education</SearchInfoItem>
+            <SearchInfoItem>Animal</SearchInfoItem>
+            <SearchInfoItem>Politics</SearchInfoItem>
+            <SearchInfoItem>Movie</SearchInfoItem>
+            <SearchInfoItem>Music</SearchInfoItem>
+          </SearchInfoList>
+        </SearchInfoTitle>
+      </SearchInfo>
+    )
+  } else {
+    return null
+  }
+}
 
 class Header extends Component {
   render () {
@@ -45,6 +74,8 @@ class Header extends Component {
             <i className={isFocused ? 'focused iconfont' : 'iconfont'}>
               &#xe60c;
             </i>
+
+            {getListArea(isFocused)}
           </SearchWrapper>
 
           <Addition>
