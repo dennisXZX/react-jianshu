@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import store from '../store/configStore'
 import { Provider } from 'react-redux'
 
-import ResetStyle from '../global-style/resetStyle'
-import GlobalStyle from '../global-style/globalStyle'
-import IconFont from '../global-style/iconfont/iconfont'
+import GlobalStyle from '../globalStyle/GlobalStyle'
 import Header from '../common/header/Header'
 
 class App extends Component {
@@ -12,11 +10,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div>
-          {/* injected global styles */}
-          <ResetStyle />
           <GlobalStyle />
-          <IconFont />
-
           <Header />
         </div>
       </Provider>
