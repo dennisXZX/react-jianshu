@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from "redux";
 import { connect } from 'react-redux'
 
 import * as headerActions from './headerActions'
@@ -20,31 +19,35 @@ import {
   SearchWrapper
 } from './headerStyle'
 
-const getListArea = (show) => {
-  if (show) {
-    return (
-      <SearchInfo>
-        <SearchInfoTitle>
-          Hot Searches
-          <SearchInfoSwitch>
-            Change
-          </SearchInfoSwitch>
-          <SearchInfoList>
-            <SearchInfoItem>Education</SearchInfoItem>
-            <SearchInfoItem>Animal</SearchInfoItem>
-            <SearchInfoItem>Politics</SearchInfoItem>
-            <SearchInfoItem>Movie</SearchInfoItem>
-            <SearchInfoItem>Music</SearchInfoItem>
-          </SearchInfoList>
-        </SearchInfoTitle>
-      </SearchInfo>
-    )
-  } else {
-    return null
-  }
-}
-
 class Header extends Component {
+  getListArea = () => {
+    const { hotSearchList, isFocused } = this.props
+
+    if (isFocused) {
+      return (
+        <SearchInfo>
+          <SearchInfoTitle>
+            Hot Searches
+            <SearchInfoSwitch>
+              Change
+            </SearchInfoSwitch>
+            <SearchInfoList>
+              {
+                hotSearchList.map(hotSearch => (
+                  <SearchInfoItem key={hotSearch}>
+                    {hotSearch}
+                  </SearchInfoItem>
+                ))
+              }
+            </SearchInfoList>
+          </SearchInfoTitle>
+        </SearchInfo>
+      )
+    } else {
+      return null
+    }
+  }
+
   render () {
     const {
       isFocused,
@@ -75,7 +78,7 @@ class Header extends Component {
               &#xe60c;
             </i>
 
-            {getListArea(isFocused)}
+            {this.getListArea()}
           </SearchWrapper>
 
           <Addition>
@@ -92,15 +95,20 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isFocused: state.header.isFocused
+    isFocused: state.header.isFocused,
+    hotSearchList: state.header.hotSearchList
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    ...bindActionCreators({
-      ...headerActions
-    }, dispatch)
+    handleSearchFocus() {
+      dispatch(headerActions.getHotSearchList())
+      dispatch(headerActions.searchFocus())
+    },
+    handleSearchBlur() {
+      dispatch(headerActions.searchBlur())
+    }
   }
 }
 
