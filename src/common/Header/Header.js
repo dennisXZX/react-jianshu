@@ -1,4 +1,12 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from "redux";
+import { connect } from 'react-redux'
+
+import {
+  handleSearchBlur,
+  handleSearchFocus
+} from '../../store/actions/headerActions'
+
 import {
   Addition,
   Button,
@@ -11,16 +19,12 @@ import {
 } from './style'
 
 class Header extends Component {
-  state = {
-    isFocused: false
-  }
-
-  handleInputFocus = () => this.setState({ isFocused: true })
-
-  handleInputBlur = () => this.setState({ isFocused: false })
-
   render () {
-    const { isFocused } = this.state
+    const {
+      isFocused,
+      handleSearchFocus,
+      handleSearchBlur
+    } = this.props
 
     return (
       <HeaderWrapper>
@@ -36,8 +40,8 @@ class Header extends Component {
 
           <SearchWrapper>
             <NavSearch
-              onFocus={this.handleInputFocus}
-              onBlur={this.handleInputBlur}
+              onFocus={handleSearchFocus}
+              onBlur={handleSearchBlur}
               className={isFocused ? 'focused' : ''}
             />
 
@@ -58,4 +62,19 @@ class Header extends Component {
   }
 }
 
-export default Header
+const mapStateToProps = (state) => {
+  return {
+    isFocused: state.isFocused
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ...bindActionCreators({
+      handleSearchBlur,
+      handleSearchFocus
+    }, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
