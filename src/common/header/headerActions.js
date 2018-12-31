@@ -1,14 +1,10 @@
-export const SEARCH_FOCUS = 'search_focus'
-export const SEARCH_BLUR = 'search_blur'
+export const SEARCH_FOCUS = 'Header.SEARCH_FOCUS'
+export const SEARCH_BLUR = 'Header.SEARCH_BLUR'
 
-export const handleSearchFocus = () => (
-  {
-    type: SEARCH_FOCUS,
-  }
-)
+export const handleSearchFocus = () => ({
+  type: SEARCH_FOCUS,
+})
 
-export const handleSearchBlur = () => (
-  {
-    type: SEARCH_BLUR,
-  }
-)
+export const handleSearchBlur = () => ({
+  type: SEARCH_BLUR,
+})

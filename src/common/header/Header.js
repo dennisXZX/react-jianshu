@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from "redux";
 import { connect } from 'react-redux'
 
-import {
-  handleSearchBlur,
-  handleSearchFocus
-} from './headerActions'
+import * as headerActions from './headerActions'
 
 import {
   Addition,
@@ -71,8 +68,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     ...bindActionCreators({
-      handleSearchBlur,
-      handleSearchFocus
+      ...headerActions
     }, dispatch)
   }
 }
