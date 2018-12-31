@@ -1,4 +1,4 @@
-import { SEARCH_FOCUS, SEARCH_BLUR } from '../actions/actionTypes'
+import { SEARCH_FOCUS, SEARCH_BLUR } from './headerActions'
 
 const defaultState = {
   isFocused: false

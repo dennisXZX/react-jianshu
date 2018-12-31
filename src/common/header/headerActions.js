@@ -1,4 +1,5 @@
-import { SEARCH_FOCUS, SEARCH_BLUR } from './actionTypes'
+export const SEARCH_FOCUS = 'search_focus'
+export const SEARCH_BLUR = 'search_blur'
 
 export const handleSearchFocus = () => (
   {

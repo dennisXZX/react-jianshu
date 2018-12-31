@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import {
   handleSearchBlur,
   handleSearchFocus
-} from '../../store/actions/headerActions'
+} from './headerActions'
 
 import {
   Addition,
@@ -16,7 +16,7 @@ import {
   NavItem,
   NavSearch,
   SearchWrapper
-} from './style'
+} from './headerStyle'
 
 class Header extends Component {
   render () {
@@ -64,7 +64,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isFocused: state.isFocused
+    isFocused: state.header.isFocused
   }
 }
 
