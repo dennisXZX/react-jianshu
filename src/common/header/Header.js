@@ -86,7 +86,8 @@ class Header extends Component {
     const {
       isFocused,
       handleSearchFocus,
-      handleSearchBlur
+      handleSearchBlur,
+      hotSearchList
     } = this.props
 
     return (
@@ -103,7 +104,7 @@ class Header extends Component {
 
           <SearchWrapper>
             <NavSearch
-              onFocus={handleSearchFocus}
+              onFocus={() => handleSearchFocus(hotSearchList)}
               onBlur={handleSearchBlur}
               className={isFocused ? 'focused' : ''}
             />
@@ -139,19 +140,24 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSearchFocus () {
-      dispatch(headerActions.getHotSearchList())
+    handleSearchFocus (hotSearchList) {
+      (hotSearchList.length <= 0) && dispatch(headerActions.getHotSearchList())
+
       dispatch(headerActions.searchFocus())
     },
+
     handleSearchBlur () {
       dispatch(headerActions.searchBlur())
     },
+
     handleHotSearchMouseEnter () {
       dispatch(headerActions.hotSearchMouseEnter())
     },
+
     handleHotSearchMouseLeave () {
       dispatch(headerActions.hotSearchMouseLeave())
     },
+
     handleChangePage (currentPage, totalPage, spinIcon) {
       // retrieve the transform rotate value
       const originAngle = spinIcon.style.transform.replace(/[^0-9]/ig, '')
