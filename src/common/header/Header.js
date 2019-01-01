@@ -20,25 +20,51 @@ import {
 } from './headerStyle'
 
 class Header extends Component {
-  getListArea = () => {
-    const { hotSearchList, isFocused } = this.props
+  getCurrentPageItems = () => {
+    const {
+      hotSearchList,
+      currentPage,
+    } = this.props
 
-    if (isFocused) {
+    const pageList = []
+
+    if (hotSearchList.length) {
+      for (let i = (currentPage - 1) * 7; i < currentPage * 7; i++) {
+        pageList.push(
+          <SearchInfoItem key={hotSearchList[i]}>
+            {hotSearchList[i]}
+          </SearchInfoItem>
+        )
+      }
+    }
+
+    return pageList
+  }
+
+  getListArea = () => {
+    const {
+      isFocused,
+      isHotSearchMouseIn,
+      handleChangePage,
+      handleHotSearchMouseEnter,
+      handleHotSearchMouseLeave,
+      currentPage,
+      totalPage
+    } = this.props
+
+    if (isFocused || isHotSearchMouseIn) {
       return (
-        <SearchInfo>
+        <SearchInfo
+          onMouseEnter={handleHotSearchMouseEnter}
+          onMouseLeave={handleHotSearchMouseLeave}
+        >
           <SearchInfoTitle>
             Hot Searches
-            <SearchInfoSwitch>
+            <SearchInfoSwitch onClick={() => handleChangePage(currentPage, totalPage)}>
               Change
             </SearchInfoSwitch>
             <SearchInfoList>
-              {
-                hotSearchList.map(hotSearch => (
-                  <SearchInfoItem key={hotSearch}>
-                    {hotSearch}
-                  </SearchInfoItem>
-                ))
-              }
+              {this.getCurrentPageItems()}
             </SearchInfoList>
           </SearchInfoTitle>
         </SearchInfo>
@@ -96,18 +122,34 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     isFocused: state.header.isFocused,
-    hotSearchList: state.header.hotSearchList
+    hotSearchList: state.header.hotSearchList,
+    currentPage: state.header.currentPage,
+    totalPage: state.header.totalPage,
+    isHotSearchMouseIn: state.header.isHotSearchMouseIn
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSearchFocus() {
+    handleSearchFocus () {
       dispatch(headerActions.getHotSearchList())
       dispatch(headerActions.searchFocus())
     },
-    handleSearchBlur() {
+    handleSearchBlur () {
       dispatch(headerActions.searchBlur())
+    },
+    handleHotSearchMouseEnter () {
+      dispatch(headerActions.hotSearchMouseEnter())
+    },
+    handleHotSearchMouseLeave () {
+      dispatch(headerActions.hotSearchMouseLeave())
+    },
+    handleChangePage (currentPage, totalPage) {
+      if (currentPage < totalPage) {
+        dispatch(headerActions.changePage(currentPage + 1))
+      } else {
+        dispatch(headerActions.changePage(1))
+      }
     }
   }
 }

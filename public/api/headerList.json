@@ -1,4 +1,7 @@
 {
   "success": true,
-  "hotSearchList": ["vue", "PHP","flutter", "docker", "Gaming", "Education"]
+  "hotSearchList": [
+    "Vue", "PHP", "Flutter", "Docker", "Gaming", "Education", "Angular",
+    "React", "Rxjs", "Redux", "Javascript", "Java", "Python", "Golang"
+  ]
 }
