@@ -113,6 +113,7 @@ export const SearchWrapper = styled.div`
   position: relative;
   
   .zoom {
+    cursor: pointer;
     position: absolute;
     right: 5px;
     bottom: 5px;
@@ -123,7 +124,7 @@ export const SearchWrapper = styled.div`
     font-size: 1.3rem;
     transition: all 0.4s ease-out;
     transform: rotate(0deg);
-    
+
     &.focused {
       background: #777;
       color: #fff;
