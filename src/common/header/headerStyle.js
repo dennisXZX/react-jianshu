@@ -121,10 +121,13 @@ export const SearchWrapper = styled.div`
     border-radius: 15px;
     text-align: center;
     font-size: 1.3rem;
+    transition: all 0.4s ease-out;
+    transform: rotate(0deg);
     
     &.focused {
       background: #777;
       color: #fff;
+      transform: rotate(360deg);
     }
   }
 `
