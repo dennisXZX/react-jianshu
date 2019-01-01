@@ -60,7 +60,15 @@ class Header extends Component {
         >
           <SearchInfoTitle>
             Hot Searches
-            <SearchInfoSwitch onClick={() => handleChangePage(currentPage, totalPage)}>
+            <SearchInfoSwitch
+              onClick={() => handleChangePage(currentPage, totalPage, this.spinIcon)}
+            >
+              <i
+                className="iconfont spin"
+                ref={(icon) => {this.spinIcon = icon}}
+              >
+                &#xe851;
+              </i>
               Change
             </SearchInfoSwitch>
             <SearchInfoList>
@@ -100,7 +108,7 @@ class Header extends Component {
               className={isFocused ? 'focused' : ''}
             />
 
-            <i className={isFocused ? 'focused iconfont' : 'iconfont'}>
+            <i className={isFocused ? 'focused iconfont zoom' : 'iconfont zoom'}>
               &#xe60c;
             </i>
 
@@ -144,7 +152,14 @@ const mapDispatchToProps = (dispatch) => {
     handleHotSearchMouseLeave () {
       dispatch(headerActions.hotSearchMouseLeave())
     },
-    handleChangePage (currentPage, totalPage) {
+    handleChangePage (currentPage, totalPage, spinIcon) {
+      // retrieve the transform rotate value
+      const originAngle = spinIcon.style.transform.replace(/[^0-9]/ig, '')
+      // convert it into numeric format
+      const originAngleNum = originAngle ? parseInt(originAngle, 10) : 0
+      // set the transform rotate value
+      spinIcon.style.transform = `rotate(${originAngleNum + 360}deg)`
+
       if (currentPage < totalPage) {
         dispatch(headerActions.changePage(currentPage + 1))
       } else {
