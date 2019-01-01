@@ -5,6 +5,8 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 import GlobalStyle from '../globalStyle/GlobalStyle'
 import Header from '../common/header/Header'
+import Home from '../pages/home'
+import Detail from '../pages/detail'
 
 class App extends Component {
   render() {
@@ -15,8 +17,8 @@ class App extends Component {
           <Header />
           <BrowserRouter>
             <Fragment>
-              <Route path='/' exact render={() => <div>home</div>}></Route>
-              <Route path='/detail' render={() => <div>detail</div>}></Route>
+              <Route path='/' exact component={Home}></Route>
+              <Route path='/detail' component={Detail}></Route>
             </Fragment>
           </BrowserRouter>
         </div>
