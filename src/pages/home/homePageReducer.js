@@ -20,6 +20,23 @@ const defaultState = {
       id: 4,
       title: 'Programming'
     }
+  ],
+  articleList: [
+    {
+      id: 1,
+      title: 'Title 1',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto at commodi deserunt dolorem, eaque earum error est, exercitationem fugiat'
+    },
+    {
+      id: 2,
+      title: 'Title 2',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto at commodi deserunt dolorem, eaque earum error est, exercitationem fugiat'
+    },
+    {
+      id: 3,
+      title: 'Title 3',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto at commodi deserunt dolorem, eaque earum error est, exercitationem fugiat'
+    }
   ]
 }
 

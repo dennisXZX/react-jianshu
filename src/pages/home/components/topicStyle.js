@@ -4,6 +4,7 @@ export const TopicWrapper = styled.div`
   padding: 20px 0 10px 0;
   margin-left: -18px;
   overflow: hidden;
+  border-bottom: 1px solid #dcdcdc;
 `
 
 export const TopicItem = styled.div`
@@ -20,7 +21,7 @@ export const TopicItem = styled.div`
   cursor: pointer;
   
   &:hover {
-    background-color: #f7f4e2;
+    background-color: rgba(234, 111, 90, 0.12);
   }
 `
 
