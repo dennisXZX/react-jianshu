@@ -5,8 +5,8 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 import GlobalStyle from '../globalStyle/GlobalStyle'
 import Header from '../common/header/Header'
-import Home from '../pages/home'
-import Detail from '../pages/detail'
+import Home from '../pages/home/HomePage'
+import Detail from '../pages/detail/DetailPage'
 
 class App extends Component {
   render() {
