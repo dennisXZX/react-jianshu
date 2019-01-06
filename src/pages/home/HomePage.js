@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import Topic from './components/Topic'
 import Recommend from './components/Recommend'
 import List from './components/List'
 import Writer from './components/Writer'
+
+import * as homeActions from './homePageActions'
 
 import {
   HomeWrapper,
@@ -28,6 +32,18 @@ class Home extends Component {
       </HomeWrapper>
     )
   }
+
+  componentDidMount () {
+    this.props.getHomePageData()
+  }
 }
 
-export default Home
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getHomePageData() {
+      dispatch(homeActions.getHomePageData())
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Home)
