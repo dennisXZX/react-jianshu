@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import * as headerActions from './headerActions'
+import { logout } from '../../pages/login/loginPageActions'
 
 import {
   Addition,
@@ -88,7 +89,9 @@ class Header extends Component {
       isFocused,
       handleSearchFocus,
       handleSearchBlur,
-      hotSearchList
+      hotSearchList,
+      handleLogout,
+      isLogin
     } = this.props
 
     return (
@@ -100,7 +103,12 @@ class Header extends Component {
         <Nav>
           <NavItem className="left active">Home</NavItem>
           <NavItem className="left">Download</NavItem>
-          <NavItem className="right">Login</NavItem>
+
+          {
+            isLogin
+              ? <NavItem className="right" onClick={handleLogout}>Logout</NavItem>
+              : <Link to='/login'><NavItem className="right">Login</NavItem></Link>
+          }
           <NavItem className="right">
             <i className="iconfont">&#xe636;</i>
           </NavItem>
@@ -137,7 +145,8 @@ const mapStateToProps = (state) => {
     hotSearchList: state.header.hotSearchList,
     currentPage: state.header.currentPage,
     totalPage: state.header.totalPage,
-    isHotSearchMouseIn: state.header.isHotSearchMouseIn
+    isHotSearchMouseIn: state.header.isHotSearchMouseIn,
+    isLogin: state.login.isLogin
   }
 }
 
@@ -174,6 +183,10 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(headerActions.changePage(1))
       }
+    },
+
+    handleLogout () {
+      dispatch(logout())
     }
   }
 }
