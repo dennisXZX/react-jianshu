@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import {
   Content,
   DetailWrapper,
@@ -7,16 +9,23 @@ import {
 
 class Detail extends Component {
   render () {
+    const { title, content } = this.props
+
     return (
       <DetailWrapper>
-        <Header>Title</Header>
-        <Content>
-          <p><b>Lorem ipsum dolor sit amet</b>, consectetur adipisicing elit. Autem consequuntur delectus deleniti doloribus eos incidunt ipsa laboriosam magnam maxime, modi pariatur quae repudiandae sapiente, sequi sint suscipit tempore? Aperiam, minima?</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequuntur delectus deleniti doloribus eos incidunt ipsa laboriosam magnam maxime, modi pariatur quae repudiandae sapiente, sequi sint suscipit tempore? Aperiam, minima?</p>
-        </Content>
+        <Header>{title}</Header>
+        <Content dangerouslySetInnerHTML={{ __html: content }} />
       </DetailWrapper>
     )
   }
 }
 
-export default Detail
+const mapStateToProps = (state) => {
+  return {
+    title: state.detail.title,
+    content: state.detail.content
+  }
+}
+
+
+export default connect(mapStateToProps, null)(Detail)
