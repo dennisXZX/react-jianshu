@@ -7,6 +7,7 @@ import GlobalStyle from '../globalStyle/GlobalStyle'
 import Header from '../common/header/Header'
 import Home from '../pages/home/HomePage'
 import Detail from '../pages/detail/DetailPage'
+import Login from '../pages/login/Login'
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <Header />
             <Route path='/' exact component={Home}></Route>
             <Route path='/detail/:id' component={Detail}></Route>
+            <Route path='/login' component={Login}></Route>
           </Fragment>
         </BrowserRouter>
       </Provider>
