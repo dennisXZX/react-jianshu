@@ -26,7 +26,7 @@ export const TopicItem = styled.div`
 `
 
 export const TopicImage = styled.div`
-  background: url("${props => props.url}") no-repeat center;
+  background: url(${props => props.url}) no-repeat center;
   background-size: cover;
   float: left;
   width: 32px;

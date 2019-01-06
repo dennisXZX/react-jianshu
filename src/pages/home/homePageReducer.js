@@ -2,6 +2,8 @@ import {
 
 } from './homePageActions'
 
+import recommendImg from '../../statics/recommend.png'
+
 const defaultState = {
   topicList: [
     {
@@ -36,6 +38,28 @@ const defaultState = {
       id: 3,
       title: 'Title 3',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto at commodi deserunt dolorem, eaque earum error est, exercitationem fugiat'
+    }
+  ],
+  recommendList: [
+    {
+      id: 1,
+      imgUrl: recommendImg
+    },
+    {
+      id: 2,
+      imgUrl: recommendImg
+    },
+    {
+      id: 3,
+      imgUrl: recommendImg
+    },
+    {
+      id: 4,
+      imgUrl: recommendImg
+    },
+    {
+      id: 5,
+      imgUrl: recommendImg
     }
   ]
 }

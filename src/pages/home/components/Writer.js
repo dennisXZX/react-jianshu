@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 
+import { WriterWrapper } from './writerStyle'
+
 class Writer extends Component {
   render () {
     return (
-      <div>writer</div>
+      <WriterWrapper>writer List</WriterWrapper>
     )
   }
 }

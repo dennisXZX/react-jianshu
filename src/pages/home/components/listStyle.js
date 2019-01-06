@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ListImage = styled.div`
-  background: url("${props => props.url}") no-repeat center;
+  background: url(${props => props.url}) no-repeat center;
   background-size: cover;
   float: right;
   display: block;

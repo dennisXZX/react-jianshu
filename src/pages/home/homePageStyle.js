@@ -22,6 +22,6 @@ export const HomeBanner = styled.img.attrs({
 `
 
 export const HomeRight = styled.div`
-  width: 240px;
+  width: 280px;
   float: right;
 `
