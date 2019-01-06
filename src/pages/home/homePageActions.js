@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export const CHANGE_HOME_DATA = 'Home.CHANGE_HOME_DATA'
 export const ADD_MORE_LIST = 'Home.ADD_MORE_LIST'
+export const TOGGLE_TOP_SHOW = 'Home.TOGGLE_TOP_SHOW'
 
 const _changeHomeData = (topicList, articleList, recommendList) => ({
   type: CHANGE_HOME_DATA,
@@ -37,3 +38,8 @@ export const getMoreList = (articlePage) => (dispatch) => {
       dispatch(_addMoreList(listData, nextArticlePage))
     })
 }
+
+export const toggleTopShow = (isScrollTopShow) => ({
+  type: TOGGLE_TOP_SHOW,
+  isScrollTopShow
+})

@@ -6,7 +6,7 @@ import Recommend from './components/Recommend'
 import List from './components/List'
 import Writer from './components/Writer'
 
-import { getHomePageData } from './homePageActions'
+import { getHomePageData, toggleTopShow } from './homePageActions'
 
 import {
   BackToTop,
@@ -21,7 +21,13 @@ class Home extends Component {
     window.scrollTo(0, 0)
   }
 
+  bindEvents = () => {
+    window.addEventListener('scroll', this.props.changeScrollTopShow)
+  }
+
   render () {
+    const { showScroll } = this.props
+
     return (
       <HomeWrapper>
         <HomeLeft>
@@ -35,24 +41,50 @@ class Home extends Component {
           <Writer />
         </HomeRight>
 
-        <BackToTop onClick={this.handleScrollToTop}>
-          Top
-        </BackToTop>
+        {
+          showScroll && (
+            <BackToTop
+              onClick={this.handleScrollToTop}>
+              Top
+            </BackToTop>
+          )
+        }
+
       </HomeWrapper>
     )
   }
 
   componentDidMount () {
     this.props.getHomePageData()
+    this.bindEvents()
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.props.changeScrollTopShow)
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    showScroll: state.home.showScroll
+  }
+}
+
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    getHomePageData() {
+    getHomePageData () {
       dispatch(getHomePageData())
+    },
+
+    changeScrollTopShow () {
+      if (document.documentElement.scrollTop > 100) {
+        dispatch(toggleTopShow(true))
+      } else {
+        dispatch(toggleTopShow(false))
+      }
     }
   }
 }
 
-export default connect(null, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
