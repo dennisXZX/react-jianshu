@@ -6,7 +6,7 @@ import Recommend from './components/Recommend'
 import List from './components/List'
 import Writer from './components/Writer'
 
-import * as homeActions from './homePageActions'
+import { getHomePageData } from './homePageActions'
 
 import {
   HomeWrapper,
@@ -41,7 +41,7 @@ class Home extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     getHomePageData() {
-      dispatch(homeActions.getHomePageData())
+      dispatch(getHomePageData())
     }
   }
 }

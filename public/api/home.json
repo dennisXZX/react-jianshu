@@ -22,17 +22,17 @@
     "articleList": [
       {
         "id": 1,
-        "title": "title 1",
+        "title": "title",
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto at commodi deserunt dolorem, eaque earum error est, exercitationem fugiat"
       },
       {
         "id": 2,
-        "title": "title 2",
+        "title": "title",
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto at commodi deserunt dolorem, eaque earum error est, exercitationem fugiat"
       },
       {
         "id": 3,
-        "title": "title 3",
+        "title": "title",
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto at commodi deserunt dolorem, eaque earum error est, exercitationem fugiat"
       }
     ],

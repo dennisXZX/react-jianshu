@@ -1,12 +1,19 @@
 import axios from 'axios'
 
 export const CHANGE_HOME_DATA = 'Home.CHANGE_HOME_DATA'
+export const ADD_MORE_LIST = 'Home.ADD_MORE_LIST'
 
-export const _changeHomeData = (topicList, articleList, recommendList) => ({
+const _changeHomeData = (topicList, articleList, recommendList) => ({
   type: CHANGE_HOME_DATA,
   topicList,
   articleList,
   recommendList
+})
+
+const _addMoreList = (listData, nextArticlePage) => ({
+  type: ADD_MORE_LIST,
+  listData,
+  nextArticlePage
 })
 
 export const getHomePageData = () => (dispatch) => {
@@ -19,5 +26,14 @@ export const getHomePageData = () => (dispatch) => {
     })
     .catch(() => {
       console.log('Get home page data error')
+    })
+}
+
+export const getMoreList = (articlePage) => (dispatch) => {
+  axios.get(`api/homeList.json?page=${articlePage}`)
+    .then(res => {
+      const listData = res.data.data
+      const nextArticlePage = articlePage + 1
+      dispatch(_addMoreList(listData, nextArticlePage))
     })
 }

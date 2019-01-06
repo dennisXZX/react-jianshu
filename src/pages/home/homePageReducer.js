@@ -1,11 +1,13 @@
 import {
-  CHANGE_HOME_DATA
+  CHANGE_HOME_DATA,
+  ADD_MORE_LIST
 } from './homePageActions'
 
 const defaultState = {
   topicList: [],
   articleList: [],
-  recommendList: []
+  recommendList: [],
+  articlePage: 1
 }
 
 export default (state = defaultState, action) => {
@@ -16,6 +18,12 @@ export default (state = defaultState, action) => {
         topicList: action.topicList,
         articleList: action.articleList,
         recommendList: action.recommendList
+      }
+    case ADD_MORE_LIST:
+      return {
+        ...state,
+        articleList: [...state.articleList, ...action.listData],
+        articlePage: action.nextArticlePage
       }
     default:
       return state
