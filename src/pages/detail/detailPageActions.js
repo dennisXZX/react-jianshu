@@ -12,4 +12,7 @@ export const getDetail = (articleId) => (dispatch) => {
         data
       })
     })
+    .catch(err => {
+      console.log('get detail error', err)
+    })
 }

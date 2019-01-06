@@ -24,6 +24,9 @@ export const login = (account, password) => (dispatch) => {
         console.log('login failure')
       }
     })
+    .catch(err => {
+      console.log('login error', err)
+    })
 }
 
 export const logout = () => _changeLogout()
