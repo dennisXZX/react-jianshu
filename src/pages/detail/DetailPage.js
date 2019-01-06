@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { getDetail } from './detailPageActions'
 
 import {
   Content,
@@ -18,6 +19,10 @@ class Detail extends Component {
       </DetailWrapper>
     )
   }
+
+  componentDidMount () {
+    this.props.getDetail(this.props.match.params.id)
+  }
 }
 
 const mapStateToProps = (state) => {
@@ -27,5 +32,12 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDetail (articleId) {
+      dispatch(getDetail(articleId))
+    }
+  }
+}
 
-export default connect(mapStateToProps, null)(Detail)
+export default connect(mapStateToProps, mapDispatchToProps)(Detail)

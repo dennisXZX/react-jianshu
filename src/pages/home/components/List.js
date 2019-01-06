@@ -24,7 +24,7 @@ class List extends Component {
       <div>
         {articleList.map((article, index) => {
           return (
-            <Link key={index} to='/detail'>
+            <Link key={index} to={`/detail/${article.id}`}>
               <ListItem>
                 <ListImage url={listImage} />
                 <ListInfo>

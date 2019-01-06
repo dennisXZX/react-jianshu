@@ -1,19 +1,18 @@
-import {
-
-} from './detailPageActions'
-import React from 'react'
+import { GET_DETAIL } from './detailPageActions'
 
 const defaultState = {
-  title: 'Title',
-  content: `
-    <p><b>Lorem ipsum dolor sit amet</b>, consectetur adipisicing elit. Autem consequuntur delectus deleniti doloribus eos incidunt ipsa laboriosam magnam maxime, modi pariatur quae repudiandae sapiente, sequi sint suscipit tempore? Aperiam, minima?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequuntur delectus deleniti doloribus eos incidunt ipsa laboriosam magnam maxime, modi pariatur quae repudiandae sapiente, sequi sint suscipit tempore? Aperiam, minima?</p>`
+  title: '',
+  content: ''
 }
-
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-
+    case GET_DETAIL:
+      return {
+        ...state,
+        title: action.data.title,
+        content: action.data.content
+      }
     default:
       return state
   }
