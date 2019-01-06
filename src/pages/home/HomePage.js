@@ -9,6 +9,7 @@ import Writer from './components/Writer'
 import { getHomePageData } from './homePageActions'
 
 import {
+  BackToTop,
   HomeWrapper,
   HomeLeft,
   HomeRight,
@@ -16,6 +17,10 @@ import {
 } from './homePageStyle'
 
 class Home extends Component {
+  handleScrollToTop = () => {
+    window.scrollTo(0, 0)
+  }
+
   render () {
     return (
       <HomeWrapper>
@@ -29,6 +34,10 @@ class Home extends Component {
           <Recommend />
           <Writer />
         </HomeRight>
+
+        <BackToTop onClick={this.handleScrollToTop}>
+          Top
+        </BackToTop>
       </HomeWrapper>
     )
   }

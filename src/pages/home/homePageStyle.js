@@ -25,3 +25,20 @@ export const HomeRight = styled.div`
   width: 280px;
   float: right;
 `
+
+export const BackToTop = styled.div`
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 50%;
+  
+  &:hover {
+    background-color: rgba(234, 111, 90, 0.12)
+  }
+`
