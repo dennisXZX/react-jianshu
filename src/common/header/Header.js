@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import * as headerActions from './headerActions'
 
@@ -92,7 +93,9 @@ class Header extends Component {
 
     return (
       <HeaderWrapper>
-        <Logo />
+        <Link to='/'>
+          <Logo />
+        </Link>
 
         <Nav>
           <NavItem className="left active">Home</NavItem>

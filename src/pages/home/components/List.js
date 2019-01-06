@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getMoreList } from '../homePageActions'
 
 import {
@@ -23,13 +24,15 @@ class List extends Component {
       <div>
         {articleList.map((article, index) => {
           return (
-            <ListItem key={index}>
-              <ListImage url={listImage} />
-              <ListInfo>
-                <h3 className='title'>{article.title}</h3>
-                <p className='desc'>{article.description}</p>
-              </ListInfo>
-            </ListItem>
+            <Link key={index} to='/detail'>
+              <ListItem>
+                <ListImage url={listImage} />
+                <ListInfo>
+                  <h3 className='title'>{article.title}</h3>
+                  <p className='desc'>{article.description}</p>
+                </ListInfo>
+              </ListItem>
+            </Link>
           )
         })}
 
