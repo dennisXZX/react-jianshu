@@ -6,7 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import GlobalStyle from '../globalStyle/GlobalStyle'
 import Header from '../common/header/Header'
 import Home from '../pages/home/HomePage'
-import Detail from '../pages/detail/DetailPage'
+import Detail from '../pages/detail/loadable'
 import Login from '../pages/login/Login'
 import Write from '../pages/write/Write'
 
